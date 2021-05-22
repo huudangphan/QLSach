@@ -1,0 +1,69 @@
+﻿@model IEnumerable<QLBanSach.Models.DONDATHANG>
+
+@{
+    ViewBag.Title = "QuanLyDonHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayGiao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DaThanhToan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinhTrangGiaoHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KHACHHANG.HoTen)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayGiao)
+        </td>
+        <td>
+            @if (item.DaThanhToan == false)
+            {
+                <input type="checkbox" name="name" value="false" disabled="disabled" />
+            }
+            else
+            {
+                <input type="checkbox" name="name" value="true" checked="checked" disabled="disabled" />
+            }
+           
+        </td>
+        <td>
+            @if (item.TinhTrangGiaoHang == false)
+            {
+                <input type="checkbox" name="name" value="false" disabled="disabled" />
+            }
+            else
+            {
+                <input type="checkbox" name="name" value="true" checked="checked" disabled="disabled" />
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KHACHHANG.HoTen)
+        </td>
+        <td>
+           
+            @Html.ActionLink("Details", "Details", new { id=item.MaDH }) |
+
+        </td>
+    </tr>
+}
+
+</table>

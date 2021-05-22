@@ -1,0 +1,16 @@
+﻿@model IEnumerable<QLBanSach.Models.CHUDE>
+
+
+<ul class="list-group">
+    <li class="list-group-item active" style="text-align:left;font-size:20px;margin-left:20px;">
+        CHỦ ĐỀ SÁCH
+    </li>
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item"><a href="@Url.Action("SachTheoNXB","BookStore",new { id=item.MaCD})">  @Html.DisplayFor(x => item.TenChuDe)</a></li>
+
+    }
+
+</ul>
+
+

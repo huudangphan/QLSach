@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3 style="color:red;">@ViewBag.ThongBao</h3>
+
+@using (Html.BeginForm())
+{
+    <table>
+
+        <tr style="height:40px">
+            <td>Tên đăng nhập</td>
+            <td>
+                @Html.TextBox("TaiKhoan")
+                @ViewData["Loi1"]
+            </td>
+
+        </tr>
+
+        <tr style="height:40px">
+            <td>Mật khẩu</td>
+            <td>
+                @Html.Password("MatKhau")
+                @ViewData["Loi1"]
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="submit" name="name" value="Đăng nhập" />
+            </td>
+        </tr>
+    </table>
+
+
+}
+

@@ -1,0 +1,45 @@
+﻿@model QLBanSach.Models.ViewSanPham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4 col-sm-4" style="text-align:center;padding:2px;margin-top:1px;">
+        <img src="~/Assit/Images/Images/@Html.DisplayFor(modelItem=>Model.anhBia)" alt="Alternate Text" style="width:150px;height:250px;" />
+
+
+        <div style="text-align:center;margin-bottom:10px;">
+            @Html.DisplayFor(modelItem => Model.tenSach)
+            <br />
+            <p>Giá bán</p>
+            @Html.DisplayFor(modelItem => Model.giaBan)
+            <br />
+            <p>Mô tả</p>
+            @Html.DisplayFor(modelItem => Model.moTa)
+            
+           
+
+
+        </div>
+        <div class="r" style="text-align:justify;padding-left:5px;">
+            <p class="pull-right" style="padding:0 15px 0 0">15 reviewer</p>
+            <p style="padding: 0 0 0 15px">
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+            </p>
+        </div>
+        <div>
+            @*<a href="@Url.Action("ThemGioHang","GioHang ",new { @iMaSach=Model.maSach,@strUrl=Request.Url.ToString()})" class="list-group-item">Đặt mua</a>*@
+            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSach = Model.maSach, @strUrl = Request.Url.ToString() }))
+            {
+        <input type="submit" class="btn btn-primary" name="name" value="Mua" />}
+        </div>
+    </div>
+</div>
+
+

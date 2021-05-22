@@ -1,0 +1,14 @@
+﻿@model IEnumerable<QLBanSach.Models.NHAXUATBAN>
+
+
+<ul class="list-group">
+    <li class="list-group-item active" style="text-align:left;font-size:20px;margin-left:20px;">
+        NXB SÁCH
+    </li>
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item"><a href="@Url.Action("SachTheoNXB","BookStore",new { id=item.MaNXB})">  @Html.DisplayFor(x => item.TenNXB)</a></li>   
+    }
+ 
+</ul>
+

@@ -1,0 +1,55 @@
+﻿@using QLBanSach.Models
+@model List<GioHang>
+
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table border="1px solid">
+    <tr style="text-align:center;font-weight:bold">
+        <td>Mã sách</td>
+        <td>Tên sách</td>
+        <td>Ảnh Bìa</td>
+        <td>Số lượng</td>
+        <td>Đơn giá</td>
+        <td>Thành tiền</td>
+        <td></td>
+        <td></td>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr style="text-align:center;font-weight:bold">
+    <td>@item.iMaSach</td>
+    <td>@item.iTenSach</td>
+    <td><img src="~/Assit/Images/Images/@item.iAnhBia" alt="Alternate Text" / style="width:70px;height:100px;"></td>
+
+    
+        @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @MaSach = item.iMaSach }))
+        {
+        <td>
+            <input type="number" name="txtSoluong" min="1" value="@item.soLuong" />
+        </td>
+
+        <td>@Html.FormatValue(item.donGia, "{0:#,###}")</td>
+        <td>@Html.FormatValue(item.thanhTien, "{0:#,###}")</td>
+        <td><input type="submit" value="Cập nhật" /></td>
+    }
+        
+        <td>@Html.ActionLink("Xóa", "XoaGioHang", new { @MaSach = item.iMaSach })</td>
+    </tr>
+    }
+<tr style="text-align:right;font-weight:bold;color:red;">
+    <td colspan="3">Số lượng sách:@ViewBag.TongSoluong</td>
+    <td colspan="5">Tổng thành tiền:@ViewBag.TongThanhTien</td>
+</tr>
+    <tr>
+        <td colspan="8" style="font-weight:bold;text-align:right">@Html.ActionLink("Xóa tất cả","XoaTatCaGioHang")</td>
+    </tr>
+    <tr>
+        <td colspan="8" style="font-weight:bold;text-align:center;font-size:20px;">
+            @Html.ActionLink("Đặt hàng","DatHang","GioHang")
+        </td>
+    </tr>
+</table>
+

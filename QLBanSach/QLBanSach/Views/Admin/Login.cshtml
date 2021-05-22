@@ -1,0 +1,47 @@
+﻿@model QLBanSach.Models.Admin
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+
+
+
+    <div>
+        <h1>ĐĂNG NHẬP</h1>
+    </div>
+    <div class="main-w3layouts-agileinfo">
+        <div class="wthree-form">
+            <h2>Điền đầy đủ thông tin</h2>
+            <h3 style="color:red;text-align:center">@ViewBag.ThongBao</h3>
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true);
+                <div class="form-sub-w3">
+                    <input type="text" name="username" required="" />
+                    <div class="icon" -w3>
+                        <i class="fa fa-user" aria-hiden="true"></i>
+                    </div>
+                    @ViewBag.Loi1
+                </div>
+                <div class="form-sub-w3">
+                    <input type="text" name="password" required="" />
+                    <div class="icon" -w3>
+                        <i class="fa fa-unlock-alt" aria-hiden="true"></i>
+                    </div>
+                    @ViewBag.Loi1
+                </div>
+                <div class="clear"></div>
+                <div class="submit-agileits">
+                    <input type="submit" name="name" value="Đăng nhập" />
+                </div>
+
+            }
+        </div>
+    </div>
+
+
+
+

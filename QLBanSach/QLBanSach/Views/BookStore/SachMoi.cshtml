@@ -1,0 +1,51 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList<QLBanSach.Models.SACH>
+
+@{
+    ViewBag.Title = "SachMoi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row" style=" height:30px;background-color:darkkhaki">
+    <p style="text-align:center;font-size:25px;color:red;">SÁCH MỚI</p>
+
+</div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-4 col-sm-4" style="text-align:center;padding:2px;margin-top:1px;">
+            <a href="@Url.Action("Details","BookStore",new { id=item.MaSach})"><img src="~/Assit/Images/Images/@Html.DisplayFor(modelItem=>item.AnhBia)" alt="Alternate Text" style="width:150px;height:250px;" /></a>
+
+
+            <div style="text-align:center;margin-bottom:10px;">
+                @Html.DisplayFor(modelItem => item.TenSach)
+                <br />
+
+
+            </div>
+            <div class="r" style="text-align:justify;padding-left:5px;">
+                <p class="pull-right" style="padding:0 15px 0 0">15 reviewer</p>
+                <p style="padding: 0 0 0 15px">
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                </p>
+            </div>
+        </div>}
+
+</div>
+  Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+<div class="menu">
+    @Html.PagedListPager(Model, page => Url.Action("SachMoi", new { page = page }))
+</div>
+<style>
+    .menu li {
+        display: inline;
+    }
+</style>
+
+
+
